@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💖 Поздравление для тебя</title>
+    <style>
+        :root {
+            --pink: #ff6b9d;
+            --deep-pink: #e91e63;
+            --rose: #ff8fab;
+            --gold: #ffb3c6;
+            --white: #fff5f7;
+            --dark: #5a1a30;
+            --card-bg: rgba(255, 255, 255, 0.92);
+            --shadow: 0 20px 60px rgba(233, 30, 99, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Georgia', 'Arial', sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1a0010 0%, #2d0018 15%, #1a0020 30%, #0d0015 45%, #1a0018 60%, #20001a 75%, #150010 100%);
+            background-size: 400% 400%;
+            animation: bgShift 20s ease-in-out infinite;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+            position: relative;
+            color: var(--dark);
+        }
+
+        @keyframes bgShift {
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+            25% {
+                background-position: 100% 0%;
+            }
+            50% {
+                background-position: 100% 100%;
+            }
+            75% {
+                background-position: 0% 100%;
+            }
+        }
+
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .floating-heart {
+            position: absolute;
+            bottom: -80px;
+            font-size: 2rem;
+            animation: floatUp var(--duration) var(--delay) infinite ease-in-out;
+            opacity: 0;
+            filter: blur(0.5px);
+            text-shadow: 0 0 20px rgba(255, 107, 157, 0.6);
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) translateX(0) rotate(0deg) scale(0.4);
+                opacity: 0;
+            }
+            5% {
+                opacity: 0.7;
+            }
+            15% {
+                transform: translateY(-15vh) translateX(var(--drift1)) rotate(var(--rot1)) scale(0.7);
+                opacity: 0.85;
+            }
+            40% {
+                transform: translateY(-40vh) translateX(var(--drift2)) rotate(var(--rot2)) scale(1);
+                opacity: 0.6;
+            }
+            65% {
+                transform: translateY(-65vh) translateX(var(--drift3)) rotate(var(--rot3)) scale(0.8);
+                opacity: 0.35;
+            }
+            90% {
+                transform: translateY(-90vh) translateX(var(--drift4)) rotate(var(--rot4)) scale(0.3);
+                opacity: 0.05;
+            }
+            100% {
+                transform: translateY(-105vh) translateX(0) rotate(0deg) scale(0.1);
+                opacity: 0;
+            }
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #fff;
+            border-radius: 50%;
+            box-shadow: 0 0 8px 2px #ffb3c6, 0 0 16px 4px #ff6b9d;
+            animation: sparkleFloat var(--sdur) var(--sdel) infinite ease-in-out;
+            opacity: 0;
+        }
+
+        @keyframes sparkleFloat {
+            0%,
+            100% {
+                opacity: 0;
+                transform: translateY(0) scale(0);
+            }
+            20% {
+                opacity: 0.9;
+                transform: translateY(-30px) scale(1.4);
+            }
+            50% {
+                opacity: 0.5;
+                transform: translateY(-70px) scale(0.7);
+            }
+            80% {
+                opacity: 0.1;
+                transform: translateY(-100px) scale(0.2);
+            }
+        }
+
+        .main-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(20, 0, 10, 0.75);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 107, 157, 0.3);
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+        .menu-logo {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #ffb3c6;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            animation: logoPulse 2s ease-in-out infinite;
+        }
+        @keyframes logoPulse {
+            0%,
+            100% {
+                text-shadow: 0 0 10px rgba(255, 107, 157, 0.5);
+            }
+            50% {
+                text-shadow: 0 0 30px rgba(255, 107, 157, 0.9), 0 0 60px rgba(255, 140, 175, 0.5);
+            }
+        }
+        .menu-btn {
+            padding: 10px 20px;
+            border-radius: 50px;
+            border: 2px solid var(--pink);
+            background: transparent;
+            color: #ffb3c6;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 0.4px;
+            transition: all 0.35s ease;
+            white-space: nowrap;
+            font-family: inherit;
+        }
+        .menu-btn:hover {
+            background: var(--pink);
+            color: #fff;
+            box-shadow: 0 0 30px rgba(255, 107, 157, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .main-content {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            max-width: 620px;
+            padding: 100px 20px 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .section-card {
+            background: var(--card-bg);
+            border-radius: 28px;
+            padding: 40px 32px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            width: 100%;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1.5px solid rgba(255, 143, 171, 0.25);
+            position: relative;
+            overflow: visible;
+        }
+        .section-card::before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            border-radius: 30px;
+            background: linear-gradient(135deg, #ff6b9d, #ff8fab, #ffb3c6, #ff6b9d);
+            background-size: 300% 300%;
+            animation: borderGlow 4s ease-in-out infinite;
+            z-index: -1;
+            opacity: 0.5;
+        }
+        @keyframes borderGlow {
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        .section-hidden {
+            display: none;
+        }
+
+        .decor-photos {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 24px;
+            position: relative;
+        }
+        .decor-photo-item {
+            width: 70px;
+            height: 70px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            background: rgba(255, 255, 255, 0.5);
+            box-shadow: 0 8px 25px rgba(233, 30, 99, 0.15);
+            animation: decorBounce 3s ease-in-out infinite;
+            transition: transform 0.3s;
+            cursor: default;
+            user-select: none;
+        }
+        .decor-photo-item:nth-child(1) {
+            animation-delay: 0s;
+        }
+        .decor-photo-item:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+        .decor-photo-item:nth-child(3) {
+            animation-delay: 1s;
+        }
+        .decor-photo-item:nth-child(4) {
+            animation-delay: 1.5s;
+        }
+        .decor-photo-item:nth-child(5) {
+            animation-delay: 0.25s;
+        }
+        .decor-photo-item:nth-child(6) {
+            animation-delay: 0.75s;
+        }
+        @keyframes decorBounce {
+            0%,
+            100% {
+                transform: translateY(0) scale(1);
+            }
+            30% {
+                transform: translateY(-14px) scale(1.08);
+            }
+            60% {
+                transform: translateY(-4px) scale(1.02);
+            }
+        }
+        .decor-photo-item:hover {
+            transform: scale(1.2) rotate(5deg);
+        }
+
+        .input-name {
+            width: 100%;
+            max-width: 380px;
+            padding: 16px 22px;
+            border-radius: 50px;
+            border: 2.5px solid #ffc2d1;
+            font-size: 1.15rem;
+            text-align: center;
+            font-family: inherit;
+            letter-spacing: 0.5px;
+            transition: all 0.35s ease;
+            background: #fffdfd;
+            color: #3d1a28;
+            outline: none;
+            margin: 12px 0;
+        }
+        .input-name:focus {
+            border-color: var(--pink);
+            box-shadow: 0 0 30px rgba(255, 107, 157, 0.3);
+            transform: scale(1.02);
+        }
+        .input-name::placeholder {
+            color: #d4a0b0;
+            font-style: italic;
+        }
+
+        .btn {
+            padding: 14px 36px;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            font-size: 1.05rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            font-family: inherit;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #ff6b9d, #e91e63);
+            color: #fff;
+            box-shadow: 0 8px 30px rgba(233, 30, 99, 0.35);
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 14px 40px rgba(233, 30, 99, 0.5);
+            background: linear-gradient(135deg, #ff7dab, #f0286e);
+        }
+        .btn-primary:active {
+            transform: scale(0.96);
+        }
+        .btn-yes {
+            background: linear-gradient(135deg, #4caf84, #2e7d5e);
+            color: #fff;
+            box-shadow: 0 8px 25px rgba(46, 125, 94, 0.3);
+            font-size: 1.2rem;
+            padding: 16px 50px;
+        }
+        .btn-yes:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 14px 35px rgba(46, 125, 94, 0.45);
+        }
+        .btn-no {
+            background: linear-gradient(135deg, #ff8a80, #c62828);
+            color: #fff;
+            box-shadow: 0 8px 25px rgba(198, 40, 40, 0.3);
+            font-size: 1.2rem;
+            padding: 16px 50px;
+        }
+        .btn-no:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 14px 35px rgba(198, 40, 40, 0.45);
+            animation: btnShake 0.5s ease;
+        }
+        @keyframes btnShake {
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+            15% {
+                transform: translateX(-8px);
+            }
+            30% {
+                transform: translateX(8px);
+            }
+            45% {
+                transform: translateX(-6px);
+            }
+            60% {
+                transform: translateX(6px);
+            }
+            75% {
+                transform: translateX(-3px);
+            }
+            90% {
+                transform: translateX(3px);
+            }
+        }
+        .btn-choose {
+            background: linear-gradient(135deg, #ffb347, #ff8c00);
+            color: #fff;
+            box-shadow: 0 8px 25px rgba(255, 140, 0, 0.35);
+            font-size: 1.1rem;
+            padding: 14px 44px;
+        }
+        .btn-choose:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 14px 35px rgba(255, 140, 0, 0.5);
+        }
+        .btn-next {
+            background: linear-gradient(135deg, #ff6b9d, #d81b60);
+            color: #fff;
+            box-shadow: 0 8px 25px rgba(233, 30, 99, 0.35);
+            margin-top: 10px;
+        }
+        .btn-next:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 14px 35px rgba(233, 30, 99, 0.5);
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #3d1a28;
+            margin-bottom: 8px;
+            letter-spacing: 0.4px;
+            line-height: 1.3;
+        }
+        .section-subtitle {
+            font-size: 1rem;
+            color: #8b5e6b;
+            margin-bottom: 20px;
+        }
+        .greeting-text {
+            font-size: 1.3rem;
+            color: #c0396b;
+            font-weight: 600;
+            margin: 8px 0 20px;
+            letter-spacing: 0.5px;
+            min-height: 30px;
+            transition: all 0.4s ease;
+        }
+
+        .slider-container {
+            width: 100%;
+            max-width: 420px;
+            margin: 20px auto;
+            position: relative;
+        }
+        .range-slider {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 14px;
+            border-radius: 7px;
+            background: linear-gradient(90deg, #ffccd5, #ff6b9d, #e91e63, #c0396b);
+            outline: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(233, 30, 99, 0.2);
+        }
+        .range-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: #fff;
+            border: 4px solid #e91e63;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(233, 30, 99, 0.4);
+            transition: all 0.2s ease;
+        }
+        .range-slider::-webkit-slider-thumb:hover {
+            transform: scale(1.15);
+            box-shadow: 0 8px 28px rgba(233, 30, 99, 0.55);
+        }
+        .slider-value-display {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: #e91e63;
+            margin: 10px 0;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 10px rgba(233, 30, 99, 0.3);
+            transition: all 0.1s ease;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 200;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fadeInOverlay 0.3s ease;
+        }
+        .overlay-hidden {
+            display: none;
+        }
+        @keyframes fadeInOverlay {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        .overlay-card {
+            background: #fff;
+            border-radius: 24px;
+            padding: 40px 30px;
+            text-align: center;
+            max-width: 440px;
+            width: 90%;
+            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.4);
+            animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+        }
+        @keyframes popIn {
+            from {
+                transform: scale(0.5) translateY(40px);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1) translateY(0);
+                opacity: 1;
+            }
+        }
+        .overlay-emoji {
+            font-size: 5rem;
+            animation: emojiBounce 0.7s ease infinite;
+        }
+        @keyframes emojiBounce {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+            30% {
+                transform: translateY(-25px);
+            }
+            50% {
+                transform: translateY(0);
+            }
+            70% {
+                transform: translateY(-12px);
+            }
+        }
+        .overlay-text {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #3d1a28;
+            margin: 16px 0;
+            letter-spacing: 0.5px;
+        }
+        .overlay-close {
+            padding: 10px 28px;
+            border-radius: 50px;
+            border: 2px solid #e91e63;
+            background: #fff;
+            color: #e91e63;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s;
+            font-family: inherit;
+            margin-top: 8px;
+        }
+        .overlay-close:hover {
+            background: #e91e63;
+            color: #fff;
+        }
+
+        .success-big-text {
+            font-size: 2.6rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #e91e63, #ff6b9d, #ff4081);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: none;
+            letter-spacing: 1px;
+            line-height: 1.3;
+            animation: successGlow 2s ease-in-out infinite;
+            margin: 16px 0;
+        }
+        @keyframes successGlow {
+            0%,
+            100% {
+                filter: brightness(1);
+            }
+            50% {
+                filter: brightness(1.3) drop-shadow(0 0 20px rgba(255, 107, 157, 0.7));
+            }
+        }
+        .hearts-burst {
+            position: absolute;
+            pointer-events: none;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        .burst-heart {
+            position: absolute;
+            font-size: 2rem;
+            animation: burstOut 1.5s ease-out forwards;
+            opacity: 0;
+        }
+        @keyframes burstOut {
+            0% {
+                transform: translate(0, 0) scale(0.2);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(var(--bx), var(--by)) scale(1.8);
+                opacity: 0;
+            }
+        }
+
+        .photo-gallery {
+            width: 100%;
+            margin-top: 32px;
+        }
+        .gallery-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #3d1a28;
+            margin-bottom: 20px;
+            text-align: center;
+            letter-spacing: 0.5px;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 16px;
+            width: 100%;
+        }
+        .gallery-item {
+            border-radius: 18px;
+            overflow: hidden;
+            aspect-ratio: 3/4;
+            background: linear-gradient(135deg, #ffe0e8, #ffccd5);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .gallery-item:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18);
+        }
+        .gallery-item:hover img {
+            transform: scale(1.06);
+        }
+        .gallery-placeholder {
+            font-size: 3rem;
+            color: #d4a0b0;
+            position: absolute;
+            pointer-events: none;
+        }
+        .gallery-add-hint {
+            position: absolute;
+            bottom: 8px;
+            font-size: 0.7rem;
+            color: #b08090;
+            pointer-events: none;
+            text-align: center;
+            padding: 0 4px;
+        }
+
+        @media (max-width: 600px) {
+            .section-card {
+                padding: 28px 16px;
+                border-radius: 20px;
+            }
+            .section-title {
+                font-size: 1.4rem;
+            }
+            .btn {
+                padding: 12px 24px;
+                font-size: 0.95rem;
+            }
+            .btn-yes,
+            .btn-no {
+                padding: 14px 32px;
+                font-size: 1rem;
+            }
+            .success-big-text {
+                font-size: 1.8rem;
+            }
+            .slider-value-display {
+                font-size: 2.5rem;
+            }
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+            .decor-photo-item {
+                width: 50px;
+                height: 50px;
+                font-size: 2.2rem;
+                border-radius: 12px;
+            }
+            .main-menu {
+                padding: 10px 14px;
+            }
+            .menu-logo {
+                font-size: 1.1rem;
+            }
+            .menu-btn {
+                padding: 8px 14px;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="animated-bg" id="animatedBg"></div>
+
+    <nav class="main-menu">
+        <span class="menu-logo">💝 С Любовью</span>
+        <button class="menu-btn" onclick="goToWelcome()" title="Вернуться к началу">🏠 В начало</button>
+    </nav>
+
+    <div class="main-content" id="mainContent">
+
+        <!-- СЕКЦИЯ 1: ПРИВЕТСТВИЕ И ВВОД ИМЕНИ -->
+        <div class="section-card" id="sectionWelcome">
+            <div class="decor-photos">
+                <div class="decor-photo-item">🌹</div>
+                <div class="decor-photo-item">💕</div>
+                <div class="decor-photo-item">🌸</div>
+                <div class="decor-photo-item">💖</div>
+                <div class="decor-photo-item">✨</div>
+                <div class="decor-photo-item">🎀</div>
+            </div>
+            <h2 class="section-title">💌 Добро пожаловать!</h2>
+            <p class="section-subtitle">Введи своё имя, и начнём наше маленькое приключение 💫</p>
+            <input type="text" class="input-name" id="nameInput" placeholder="Введи своё имя..." maxlength="30" autocomplete="off">
+            <p class="greeting-text" id="greetingDisplay">
+                ✨ Привет, <strong id="greetingName">дорогой человек</strong>! ✨<br>
+                <small style="color:#b07085;">Сегодня особенный день, и я хочу сказать тебе кое-что важное... 💝</small>
+            </p>
+            <button class="btn btn-primary" onclick="goToLoveQuestion()">💘 Перейти на следующую страничку</button>
+        </div>
+
+        <!-- СЕКЦИЯ 2: ВОПРОС "ТЫ МЕНЯ ЛЮБИШЬ?" -->
+        <div class="section-card section-hidden" id="sectionLove">
+            <div class="decor-photos" style="margin-bottom:16px;">
+                <div class="decor-photo-item">💗</div>
+                <div class="decor-photo-item">💓</div>
+                <div class="decor-photo-item">💘</div>
+            </div>
+            <h2 class="section-title" style="font-size:2rem;">Ты вообще меня любишь? 🥺</h2>
+            <p class="section-subtitle" id="loveSubtitle">Ответь честно...</p>
+            <div style="display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-top:16px;">
+                <button class="btn btn-yes" onclick="answerYes()">💚 Да!</button>
+                <button class="btn btn-no" onclick="answerNo()">💔 Нет</button>
+            </div>
+        </div>
+
+        <!-- ДИНАМИЧЕСКИЕ СЕКЦИИ ДЛЯ 10 ЛЮБОВНЫХ ВОПРОСОВ -->
+        <div id="loveQuestionsContainer"></div>
+
+        <!-- СЕКЦИЯ С ОТВЕТАМИ ПОСЛЕ ВОПРОСОВ -->
+        <div class="section-card section-hidden" id="loveAnswersSection">
+            <div class="decor-photos" style="margin-bottom:16px;">
+                <div class="decor-photo-item">💬</div>
+                <div class="decor-photo-item">📋</div>
+                <div class="decor-photo-item">💖</div>
+            </div>
+            <h2 class="section-title">Твои ответы 💌</h2>
+            <div id="answersList" style="text-align:left; margin:20px 0; line-height:1.8;"></div>
+            <button class="btn btn-primary" onclick="goToSliderFromAnswers()">💘 Дальше к признанию</button>
+        </div>
+
+        <!-- СЕКЦИЯ 3: СЛАЙДЕР "НАСКОЛЬКО СИЛЬНО" -->
+        <div class="section-card section-hidden" id="sectionSlider">
+            <div class="decor-photos" style="margin-bottom:16px;">
+                <div class="decor-photo-item">💝</div>
+                <div class="decor-photo-item">💖</div>
+                <div class="decor-photo-item">💕</div>
+            </div>
+            <h2 class="section-title">А насколько ты меня вообще любишь? 🤔</h2>
+            <p class="section-subtitle">Потяни ползунок и выбери свой процент любви...</p>
+            <div class="slider-container">
+                <input type="range" min="0" max="100" value="50" class="range-slider" id="loveSlider" oninput="updateSliderValue()">
+                <div class="slider-value-display" id="sliderValueDisplay">50%</div>
+            </div>
+            <button class="btn btn-choose" onclick="chooseLove()">🎯 Выбрать</button>
+        </div>
+
+        <!-- СЕКЦИЯ 4: РЕЗУЛЬТАТ + ГАЛЕРЕЯ -->
+        <div class="section-card section-hidden" id="sectionResult">
+            <div class="hearts-burst" id="heartsBurstContainer"></div>
+            <div class="decor-photos" style="margin-bottom:16px;">
+                <div class="decor-photo-item">💝</div>
+                <div class="decor-photo-item">💖</div>
+                <div class="decor-photo-item">💕</div>
+                <div class="decor-photo-item">💗</div>
+                <div class="decor-photo-item">💘</div>
+                <div class="decor-photo-item">🌹</div>
+            </div>
+            <h2 class="success-big-text" id="successMessage">Я тебя тоже очень люблю, дорогая! 💖</h2>
+            <p style="color:#8b5e6b;font-size:1.1rem;margin:8px 0 20px;">Ты — самое лучшее, что случилось в моей жизни ✨</p>
+            <div class="photo-gallery">
+                <h3 class="gallery-title">Посмотри какая киса</h3>
+                
+                <div class="gallery-grid">
+                    <div class="gallery-item"><img src="1.jpg" alt="Наше фото 1" onerror="this.style.display='none';this.parentElement.querySelector('.gallery-placeholder').style.display='block';"><span class="gallery-placeholder" style="display:none;">🖼️</span><span class="gallery-add-hint">фото 1</span></div>
+                    <div class="gallery-item"><img src="2.jpg" alt="Наше фото 2" onerror="this.style.display='none';this.parentElement.querySelector('.gallery-placeholder').style.display='block';"><span class="gallery-placeholder" style="display:none;">🖼️</span><span class="gallery-add-hint">фото 2</span></div>
+                    <div class="gallery-item"><img src="3.jpg" alt="Наше фото 3" onerror="this.style.display='none';this.parentElement.querySelector('.gallery-placeholder').style.display='block';"><span class="gallery-placeholder" style="display:none;">🖼️</span><span class="gallery-add-hint">фото 3</span></div>
+                    <div class="gallery-item"><img src="4.jpg" alt="Наше фото 4" onerror="this.style.display='none';this.parentElement.querySelector('.gallery-placeholder').style.display='block';"><span class="gallery-placeholder" style="display:none;">🖼️</span><span class="gallery-add-hint">фото 4</span></div>
+                    <div class="gallery-item"><img src="5.jpg" alt="Наше фото 5" onerror="this.style.display='none';this.parentElement.querySelector('.gallery-placeholder').style.display='block';"><span class="gallery-placeholder" style="display:none;">🖼️</span><span class="gallery-add-hint">фото 5</span></div>
+                    <div class="gallery-item"><img src="6.jpg" alt="Наше фото 6" onerror="this.style.display='none';this.parentElement.querySelector('.gallery-placeholder').style.display='block';"><span class="gallery-placeholder" style="display:none;">🖼️</span><span class="gallery-add-hint">фото 6</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="overlay overlay-hidden" id="overlayDura">
+        <div class="overlay-card">
+            <div class="overlay-emoji">🤨</div>
+            <p class="overlay-text">Ты дура? 😂💔</p>
+            <p style="color:#8b5e6b;margin-bottom:12px;">Ладно, давай попробуем ещё раз...</p>
+            <button class="overlay-close" onclick="closeOverlay('overlayDura')">🔄 Попробовать снова</button>
+        </div>
+    </div>
+
+    <div class="overlay overlay-hidden" id="overlayLow">
+        <div class="overlay-card">
+            <div class="overlay-emoji">😤</div>
+            <p class="overlay-text">То есть ты меня любишь на 99% и меньше? 🥲</p>
+            <p style="color:#8b5e6b;margin-bottom:12px;">Подумай хорошенько... Может, всё-таки 100%? 💝</p>
+            <button class="overlay-close" onclick="closeOverlay('overlayLow')">🔄 Попробовать ещё раз</button>
+        </div>
+    </div>
+
+    <script>
+        // Глобальные переменные
+        let userName = '';
+        let currentLoveQuestionIndex = 0;
+        let currentAttempts = 0;
+        const userAnswers = [];
+
+        // Массив вопросов: текст, правильные ответы (если есть), нужна ли проверка
+        const loveQuestions = [
+            { text: "Какое моё любимое блюдо? (Пицца или Макароны) 🍝", correct: null, check: false },
+            { text: "В какое время года мы встретились? 🍂", correct: ["осень", "осенью"], check: false },
+            { text: "Когда мы начали встречаться? 💑", correct: ["9 мая", "девятого мая", "9.05"], check: true },
+            { text: "Какое моё любимое время года? ☃️", correct: ["зима", "зимой"], check: false },
+            { text: "Какая песня напоминает тебе обо мне? 🎵", correct: null, check: false },
+            { text: "Сколько лет мы знакомы? 📅", correct: ["2", "2 года", "два", "два года"], check: true },
+            { text: "Что я ценю в тебе больше всего? 💎", correct: null, check: false },
+            { text: "Какое моё хобби?", correct: ["баскетбол", "баскет"], check: true },
+            { text: "Куда бы ты хотела поехать со мной? ✈️", correct: null, check: false },
+            { text: "Какое слово я говорю чаще всего? 🗣️", correct: ["бруххх", "брух"], check: false }
+        ];
+
+        function createFloatingHearts() {
+            const container = document.getElementById('animatedBg');
+            const heartEmojis = ['❤️', '💕', '💖', '💗', '💓', '💝', '💘', '🩷', '🌸', '✨', '💫', '🫧'];
+            for (let i = 0; i < 22; i++) {
+                const heart = document.createElement('span');
+                heart.classList.add('floating-heart');
+                heart.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+                heart.style.left = Math.random() * 95 + '%';
+                heart.style.setProperty('--duration', (8 + Math.random() * 16) + 's');
+                heart.style.setProperty('--delay', (Math.random() * 14) + 's');
+                heart.style.setProperty('--drift1', (Math.random() * 60 - 30) + 'px');
+                heart.style.setProperty('--drift2', (Math.random() * 90 - 45) + 'px');
+                heart.style.setProperty('--drift3', (Math.random() * 70 - 35) + 'px');
+                heart.style.setProperty('--drift4', (Math.random() * 50 - 25) + 'px');
+                heart.style.setProperty('--rot1', (Math.random() * 40 - 20) + 'deg');
+                heart.style.setProperty('--rot2', (Math.random() * 60 - 30) + 'deg');
+                heart.style.setProperty('--rot3', (Math.random() * 50 - 25) + 'deg');
+                heart.style.setProperty('--rot4', (Math.random() * 30 - 15) + 'deg');
+                heart.style.fontSize = (1.2 + Math.random() * 3.5) + 'rem';
+                container.appendChild(heart);
+            }
+            for (let i = 0; i < 30; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.classList.add('sparkle');
+                sparkle.style.left = Math.random() * 96 + '%';
+                sparkle.style.top = Math.random() * 90 + '%';
+                sparkle.style.setProperty('--sdur', (2 + Math.random() * 5) + 's');
+                sparkle.style.setProperty('--sdel', (Math.random() * 6) + 's');
+                sparkle.style.width = (2 + Math.random() * 6) + 'px';
+                sparkle.style.height = sparkle.style.width;
+                container.appendChild(sparkle);
+            }
+        }
+
+        function buildLoveQuestionSections() {
+            const container = document.getElementById('loveQuestionsContainer');
+            container.innerHTML = '';
+            loveQuestions.forEach((q, i) => {
+                const section = document.createElement('div');
+                section.className = 'section-card section-hidden';
+                section.id = 'loveQuestion' + i;
+                section.innerHTML = `
+                    <div class="decor-photos" style="margin-bottom:16px;">
+                        <div class="decor-photo-item">💌</div>
+                        <div class="decor-photo-item">💭</div>
+                        <div class="decor-photo-item">💬</div>
+                    </div>
+                    <h2 class="section-title">Вопрос ${i+1} из ${loveQuestions.length}</h2>
+                    <p class="section-subtitle" style="font-size:1.2rem; color:#c0396b;">${q.text}</p>
+                    <input type="text" class="input-name" id="loveAnswer${i}" placeholder="Твой ответ..." autocomplete="off">
+                    <button class="btn btn-next" onclick="nextLoveQuestion()">💘 Далее</button>
+                `;
+                container.appendChild(section);
+            });
+        }
+
+        function updateSliderValue() {
+            const slider = document.getElementById('loveSlider');
+            const display = document.getElementById('sliderValueDisplay');
+            display.textContent = slider.value + '%';
+            const val = parseInt(slider.value);
+            if (val < 30) display.style.color = '#c0396b';
+            else if (val < 70) display.style.color = '#e91e63';
+            else if (val < 99) display.style.color = '#ff4081';
+            else display.style.color = '#ff1744';
+        }
+
+        function showOnly(sectionId) {
+            const allIds = [
+                'sectionWelcome', 'sectionLove', 'sectionSlider', 'sectionResult', 'loveAnswersSection',
+                ...loveQuestions.map((_, i) => 'loveQuestion' + i)
+            ];
+            allIds.forEach(id => {
+                const el = document.getElementById(id);
+                if (!el) return;
+                if (id === sectionId) {
+                    el.classList.remove('section-hidden');
+                    el.style.animation = 'popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+                } else {
+                    el.classList.add('section-hidden');
+                    el.style.animation = '';
+                }
+            });
+            setTimeout(() => {
+                const target = document.getElementById(sectionId);
+                if (target && !target.classList.contains('section-hidden')) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            }, 150);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function goToLoveQuestion() {
+            const nameInput = document.getElementById('nameInput');
+            userName = nameInput.value.trim();
+            if (!userName) {
+                nameInput.style.borderColor = '#ff1744';
+                nameInput.style.animation = 'btnShake 0.5s ease';
+                nameInput.placeholder = 'Пожалуйста, введи имя!';
+                nameInput.focus();
+                setTimeout(() => {
+                    nameInput.style.borderColor = '#ffc2d1';
+                    nameInput.style.animation = '';
+                    nameInput.placeholder = 'Введи своё имя...';
+                }, 1500);
+                return;
+            }
+            document.getElementById('greetingName').textContent = userName;
+            document.getElementById('loveSubtitle').textContent = 'Ответь честно, ' + userName + '... 💭';
+            showOnly('sectionLove');
+        }
+
+        function answerYes() {
+            currentLoveQuestionIndex = 0;
+            currentAttempts = 0;
+            userAnswers.length = 0;
+            const firstInput = document.getElementById('loveAnswer0');
+            if (firstInput) firstInput.value = '';
+            showOnly('loveQuestion0');
+        }
+
+        function answerNo() {
+            document.getElementById('overlayDura').classList.remove('overlay-hidden');
+        }
+
+        function closeOverlay(overlayId) {
+            document.getElementById(overlayId).classList.add('overlay-hidden');
+            if (overlayId === 'overlayDura') showOnly('sectionLove');
+            if (overlayId === 'overlayLow') { showOnly('sectionSlider'); updateSliderValue(); }
+        }
+
+        function nextLoveQuestion() {
+            const question = loveQuestions[currentLoveQuestionIndex];
+            const input = document.getElementById('loveAnswer' + currentLoveQuestionIndex);
+            const answer = input.value.trim();
+
+            if (!answer) {
+                input.style.borderColor = '#ff1744';
+                input.style.animation = 'btnShake 0.5s ease';
+                input.placeholder = 'Напиши хоть что-нибудь!';
+                input.focus();
+                setTimeout(() => {
+                    input.style.borderColor = '#ffc2d1';
+                    input.style.animation = '';
+                    input.placeholder = 'Твой ответ...';
+                }, 1500);
+                return;
+            }
+
+            // Специальная обработка для вопроса 7 (индекс 6) при ответе "не знаю"
+            if (currentLoveQuestionIndex === 6) {
+                if (answer.toLowerCase().trim() === "не знаю") {
+                    alert("да знаешь ты всё, глупышка");
+                    input.value = '';
+                    input.placeholder = 'Ну напиши что-нибудь другое...';
+                    input.focus();
+                    return;
+                }
+            }
+
+            // Проверка для вопросов с правильным ответом
+            if (question.check) {
+                const correctAnswers = question.correct.map(a => a.toLowerCase().trim());
+                if (!correctAnswers.includes(answer.toLowerCase().trim())) {
+                    currentAttempts++;
+                    if (currentAttempts < 3) {
+                        input.style.borderColor = '#ff1744';
+                        input.style.animation = 'btnShake 0.5s ease';
+                        input.placeholder = `Неверно, попытка ${currentAttempts}/3`;
+                        input.value = '';
+                        input.focus();
+                        setTimeout(() => {
+                            input.style.borderColor = '#ffc2d1';
+                            input.style.animation = '';
+                        }, 1500);
+                        return;
+                    } else {
+                        alert(`Эх, не угадала! Правильный ответ: ${question.correct.join(' или ')}. Ладно, идём дальше.`);
+                        userAnswers[currentLoveQuestionIndex] = answer;
+                        currentAttempts = 0;
+                        goToNextQuestionOrAnswers();
+                        return;
+                    }
+                }
+            }
+
+            // Сохраняем ответ и идём дальше
+            userAnswers[currentLoveQuestionIndex] = answer;
+            currentAttempts = 0;
+            goToNextQuestionOrAnswers();
+        }
+
+        function goToNextQuestionOrAnswers() {
+            if (currentLoveQuestionIndex < loveQuestions.length - 1) {
+                currentLoveQuestionIndex++;
+                showOnly('loveQuestion' + currentLoveQuestionIndex);
+                const nextInput = document.getElementById('loveAnswer' + currentLoveQuestionIndex);
+                if (nextInput) nextInput.value = '';
+            } else {
+                showAnswersPage();
+            }
+        }
+
+        function showAnswersPage() {
+            const container = document.getElementById('answersList');
+            let html = '';
+            loveQuestions.forEach((q, i) => {
+                const userAns = userAnswers[i] || '—';
+                html += `<p><strong>${i+1}. ${q.text}</strong><br>↳ Твой ответ: <span style="color:#c0396b;">${userAns}</span>`;
+                if (q.correct) {
+                    html += ` | <span style="color:#4caf84;">✓ Правильно: ${q.correct.join(' или ')}</span>`;
+                }
+                html += `</p>`;
+            });
+            container.innerHTML = html;
+            showOnly('loveAnswersSection');
+        }
+
+        function goToSliderFromAnswers() {
+            showOnly('sectionSlider');
+            updateSliderValue();
+        }
+
+        function chooseLove() {
+            const sliderValue = parseInt(document.getElementById('loveSlider').value);
+            if (sliderValue <= 99) {
+                document.getElementById('overlayLow').classList.remove('overlay-hidden');
+            } else {
+                showSuccess();
+            }
+        }
+
+        function showSuccess() {
+            showOnly('sectionResult');
+            const displayName = userName || 'дорогая';
+            document.getElementById('successMessage').textContent = 'Я тебя тоже очень люблю, ' + displayName + '! 💖';
+            triggerHeartsBurst();
+            setTimeout(() => {
+                document.getElementById('sectionResult').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 300);
+        }
+
+        function triggerHeartsBurst() {
+            const container = document.getElementById('heartsBurstContainer');
+            container.innerHTML = '';
+            const hearts = ['💖', '💕', '💗', '💘', '💝', '💓', '❤️', '✨', '💫', '🌹', '🩷', '💞'];
+            for (let i = 0; i < 35; i++) {
+                const heart = document.createElement('span');
+                heart.classList.add('burst-heart');
+                heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+                heart.style.fontSize = (1.2 + Math.random() * 3.5) + 'rem';
+                const angle = Math.random() * Math.PI * 2;
+                const distance = 80 + Math.random() * 200;
+                heart.style.setProperty('--bx', Math.cos(angle) * distance + 'px');
+                heart.style.setProperty('--by', Math.sin(angle) * distance - 60 + 'px');
+                heart.style.animationDelay = Math.random() * 0.5 + 's';
+                heart.style.animationDuration = (1.2 + Math.random() * 2) + 's';
+                heart.style.left = '50%';
+                heart.style.top = '50%';
+                container.appendChild(heart);
+            }
+            setTimeout(() => { container.innerHTML = ''; }, 3500);
+        }
+
+        function goToWelcome() {
+            document.querySelectorAll('.overlay').forEach(o => o.classList.add('overlay-hidden'));
+            currentLoveQuestionIndex = 0;
+            currentAttempts = 0;
+            userAnswers.length = 0;
+            document.getElementById('loveSlider').value = 50;
+            updateSliderValue();
+            showOnly('sectionWelcome');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function init() {
+            createFloatingHearts();
+            buildLoveQuestionSections();
+            updateSliderValue();
+            showOnly('sectionWelcome');
+        }
+
+        document.addEventListener('DOMContentLoaded', init);
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                const welcomeSection = document.getElementById('sectionWelcome');
+                if (welcomeSection && !welcomeSection.classList.contains('section-hidden')) {
+                    e.preventDefault();
+                    goToLoveQuestion();
+                    return;
+                }
+                for (let i = 0; i < loveQuestions.length; i++) {
+                    const qSec = document.getElementById('loveQuestion' + i);
+                    if (qSec && !qSec.classList.contains('section-hidden')) {
+                        e.preventDefault();
+                        nextLoveQuestion();
+                        return;
+                    }
+                }
+            }
+        });
+
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('overlay') && !e.target.classList.contains('overlay-hidden')) {
+                e.target.classList.add('overlay-hidden');
+                if (e.target.id === 'overlayDura') showOnly('sectionLove');
+                if (e.target.id === 'overlayLow') { showOnly('sectionSlider'); updateSliderValue(); }
+            }
+        });
+    </script>
+</body>
+</html>
